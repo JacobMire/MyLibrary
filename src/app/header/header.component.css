@@ -1,0 +1,97 @@
+a {
+    text-decoration: none;
+    color:antiquewhite;
+
+}
+
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toolbar{
+    size: 0;
+}
+
+  
+  .example-button-row {
+    
+    display: table-cell;
+    max-width: 800px;
+  }
+  
+  .example-button-row .mat-mdc-button-base {
+    margin: 20px 1px 20px 0;
+    margin-left: 20px;
+    
+  }
+  
+  .example-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .example-button-container {
+    display: flex;
+    width: 180px;
+  }
+
+
+
+
+  h2 {
+    margin-top: 0;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .buttons {
+    text-align: right;
+    margin-top: 20px;
+  }
+
+
+  .search{
+    margin-right: 90px;;
+  }
+
+  input{
+    display: block;
+    height: 50px;
+    width: 30%;
+    background-color:  rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    padding: 0 10px;
+    margin-top: 60px;
+    font-size: 14px;
+    font-weight: 300;
+    }
+
+    .icon{
+        margin-top: 65px;
+        margin-right: 10px;
+    }
+
+    .title{
+
+        font-size: xx-large;
+    }
+
+    .username{
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+
+    .role{
+        margin-bottom: 10px;
+        margin-right: 10px;
+    }

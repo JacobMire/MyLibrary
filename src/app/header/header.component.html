@@ -1,0 +1,37 @@
+
+
+<mat-toolbar *ngIf="1" class ="toobar" color="primary">
+    <mat-toolbar-row>
+    <span class="title">MyLibrary</span> 
+    <span class="example-fill-remaining-space"></span>
+    <mat-icon class="icon">search</mat-icon>
+    <input class="search" type="text" placeholder="Search by book name"  >
+        <span class="username" *ngIf="1">user.Username</span>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+      
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space"></span>
+    <button mat-stroked-button class="role">Switch</button>
+    <span class="role" *ngIf="1">user.Role</span> 
+    
+</mat-toolbar-row>
+  </mat-toolbar>
+
+
+
+    <div class="example-button-row">
+      <div *ngIf ="1"class="example-flex-container">
+        <div class="example-button-container">
+          <button mat-fab extended routerLink="/books" >
+            <mat-icon>home</mat-icon>
+            My Books  
+          </button>
+        </div>
+        <div class="example-button-container">
+          <a *ngIf ="1"mat-fab (click)="openDialog()" extended routerLink="/add">
+            <mat-icon>add_to_photos</mat-icon>
+            Add New Book
+          </a>
+        </div>
+      </div>

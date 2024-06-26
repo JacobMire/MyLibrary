@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    
+   
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form (submit)="onCreateUser(createUser)"#createUser="ngForm">
+        <h3>Create User</h3>
+
+        <label for="username">Username</label>
+        <input type="text" placeholder="Name" name="name" ngModel id="username">
+        <label for="Email">Email</label>
+        <input type="text" placeholder="Email Id" name="email" ngModel id="Email Id">
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" name="password" ngModel id="password">
+
+        <br>
+        <div class="radio-input">
+            <label class="label">
+              <input
+                name="role"
+                value="admin"
+                name="radio"
+                ngModel
+                checked=""
+                id="value-1"
+                type="radio"
+              />
+              <p class="text1" font>Admin</p>
+            </label>
+            <label class="label" >
+              <input name="role" 
+              value="guest" 
+              name="radio"
+              ngModel
+              id="value-2" 
+              type="radio" />
+              <p class="text1">Guest</p>
+            </label>
+          </div>
+          
+
+        <button>Create New User</button>
+       
+
+    </form>
+</body>
+</html>
