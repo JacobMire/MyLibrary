@@ -1,15 +1,20 @@
 
+
 <h2 mat-dialog-title>Add New Book</h2>
 <mat-dialog-content>
   <form (Submit)="onSubmit(bookForm)" #bookForm="ngForm">
     <mat-form-field class="field">
-      <input matInput placeholder="Name" ngModel name="name" required>
+      <input matInput placeholder="Name" ngModel name="name" required >
+      
     </mat-form-field>
-    <mat-form-field class="field">
+    <mat-form-field class="field"> 
       <input matInput placeholder="Author" ngModel name="author" required>
     </mat-form-field>
     <mat-form-field class="field">
-      <input matInput placeholder="Date" ngModel name="date" type="date" required>
+      <input matInput id=dateInput placeholder="Date" [ngModel]="date" name="date" type="date" required (change)="onDateChanged($event)"
+      >
+
+
     </mat-form-field>
     <mat-form-field class="field">
       <input matInput placeholder="Price" ngModel name="price" required>

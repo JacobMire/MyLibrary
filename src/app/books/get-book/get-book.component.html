@@ -1,18 +1,21 @@
 <app-header></app-header>
+<mat-paginator class="paginator"[pageSize]="postsPerPage" [pageSizeOptions]= "[2,5,8,10]" [length]="totalPosts" (page)=" onChangedPage($event)"></mat-paginator>
 
-<mat-card *ngFor="let book of books" class = "card" appearance="outlined" >
+<mat-card *ngFor="let Ibook of books" class = "card" appearance="outlined" >
 
     <mat-card-header>
         <!-- <p>deleted:{{isDeleted}}</p> -->
-        <mat-card-title class="title">{{book.name}}
-            
+        <mat-card-title class="title">{{Ibook.name}}
+  
         </mat-card-title>
-        <mat-card-subtitle class="list">{{book.author}}</mat-card-subtitle>
-        <mat-card-subtitle  class="list">{{book.date}}</mat-card-subtitle>
-        <mat-card-title class= "price">₹ {{book.price}}</mat-card-title>
+        <mat-card-subtitle class="list">{{Ibook.author}}</mat-card-subtitle>
+        <mat-card-subtitle  class="list">{{Ibook.date}}</mat-card-subtitle>
+        <mat-card-title class= "price">₹ {{Ibook.price}}</mat-card-title>
       </mat-card-header>
       <mat-card-actions class="actions"align ="end">
-        <button mat-button>Edit</button>
-        <button mat-button>Delete</button>
+        <button mat-button *ngIf ="1" (click)="openDialog(Ibook)">Edit</button>
+        <button mat-button (click)="onDelete(Ibook._id)">Delete</button>
       </mat-card-actions>
   </mat-card>
+
+  <p class="info-text mat-body-1"*ngIf="books.length<=0">NO POST YET </p>

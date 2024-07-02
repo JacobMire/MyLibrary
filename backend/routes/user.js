@@ -1,18 +1,25 @@
 const express =  require('express');
 const bcrypt = require("bcrypt")
 const User = require("../models/user")
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
+const checkAuth = require('../middleware/check-auth');
 const router = express.Router();
 
 router.post('/create', (req, res) => {
-
+    let totalUsers=0;
+    // let user = User.findOne({ email: req.body.email });
+    // if (user) {
+    //   return res.status(400).json({ message: 'User already exists'+ user });
+    // }
       bcrypt.hash(req.body.password, 10)
       .then(hash =>{
+        ++totalUsers;
         const newUser = new User({
           name: req.body.name,
           email: req.body.email,
           password: hash,
           role: req.body.role,
+          userId:totalUsers
         });
         const savedUser = newUser.save()
         .then(result=>{
@@ -35,7 +42,7 @@ router.post('/create', (req, res) => {
     .then(user => {
       if(!user){
         return res.status(401).json({
-          message:"auth failed"
+          message:"Invalid Email"
         })
       }
       fetchedUser = user;
@@ -44,13 +51,13 @@ router.post('/create', (req, res) => {
      .then(result =>{
       if(!result ){
         return res.status(401).json({
-          message:"auth failed"
+          message:"Wrong Password"
         });
       }
       const token = jwt.sign(
         {email: fetchedUser.email, userId: fetchedUser._id},
         "this-is-the-secret-key",
-        {expiresIn: 120000}
+        {expiresIn: '10m'}
       );
       res.status(200).json({
         token : token
@@ -65,31 +72,11 @@ router.post('/create', (req, res) => {
 
 
 
+  router.post('/logout', checkAuth, (req, res) => {
+  
+    res.status(200).send({ auth: false, token: null, message: 'Logout successful' });
+  });
 
-
-// router.post('/login', async (req, res) => {
-//     const creds = new User({
-//         email : req.body.email,
-//         password : req.body.password,})
-  
-//     try {
-//       console.log('hii'+creds)
-//       const user = await User.findOne(creds.email);
-//       console.log('hii'+creds)
-//       if (!user) {
-//         res.status(401).json({ error: 'Invalid username or password' });
-//         return;
-//       }
-  
-//       // User exists, generate JWT token
-//       const token = jwt.sign({ username: user.username }, 'your_secret_key', { expiresIn: '1h' });
-  
-//       res.json({ token });
-//     } catch (err) {
-//       console.error('Error during login:', err);
-//       res.status(500).json({ error: 'server error' });
-//     }
-//   });
 
 
 module.exports = router;

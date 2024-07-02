@@ -32,6 +32,7 @@ import { AddBookComponent } from './books/add-book/add-book.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { EditBookComponent } from './books/edit-book/edit-book.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     CreateUserComponent,
     HeaderComponent,
     GetBookComponent,
-    AddBookComponent
+    AddBookComponent,
+    EditBookComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     MatTabsModule,
     ReactiveFormsModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule
   ],
   providers: [
     {
